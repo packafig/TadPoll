@@ -1,25 +1,25 @@
 const mongoose = require('mongoose');
-var db = mongoose.connection;
+const db = mongoose.connection;
 
-var Host = require('../Database/Models/HostModel');
-var poll = require('../Database/Models/PollModel');
-//verifying
+const Host = require('../database/Models/HostModel');
+const poll = require('../database/Models/PollModel');
+// verifying
 db.on('error', console.error);
-db.once('open', function() {
+db.once('open', () => {
   console.log('Mongodb connected');
 });
 
-var dbMethods = {};
+const dbMethods = {};
 
 
-//Mongodb CRUD Operation for HOSTS
-dbMethods.createNewHost = function(hostData){
-  var hostTemp = new Host(hostData);
-  hostTemp.save(function(err, hostData) {
+// Mongodb CRUD Operation for HOSTS
+dbMethods.createNewHost = (hostData) => {
+  const hostTemp = new Host(hostData);
+  hostTemp.save((err, hostData) => {
     if (err) return console.error('Error! ' + err);
     console.dir('saved!');
   });
-}
+};
 
 
 // dbMethods.verifyHost = function(hostNameInput, hostPasswordInput) {
@@ -45,26 +45,19 @@ dbMethods.createNewHost = function(hostData){
 // Mongodb CRUD Operations for POLLS
 
 
-dbMethods.savePollInstance = function(pollToSave){
-  var pollTemp = new poll(pollToSave);
-  pollTemp.save(function(err, pollToSave) {
+dbMethods.savePollInstance = (pollToSave) => {
+  const pollTemp = new poll(pollToSave);
+  pollTemp.save((err, pollToSave) => {
     if (err) return console.error('Error! ' + err);
     console.dir('saved!');
   });
 }
 
-dbMethods.deletePollInstance = function(pollToDelete_id){
-  poll.findByIdAndRemove(pollToDelete_id, function(err, poll){
+dbMethods.deletePollInstance = (pollToDelete_id) => {
+  poll.findByIdAndRemove(pollToDelete_id, (err, poll) => {
     console.log('removed ' + poll);
-  })
-}
-
-
-
-
-
-
-
+  });
+};
 
 mongoose.connect('mongodb://localhost/tadpoll');
 

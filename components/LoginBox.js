@@ -3,44 +3,47 @@ import React, {Component} from 'react';
 import Radiobutton from './Radio_1';
 import SubmitBtn from './SubmitButton';
 
-
 export default class LoginBox extends Component {
 render() {
   const questions = this.createQuestions();
   return (
-    <div id='LoginBox'>
+    <div id="LoginBox">
       <Well>
         <h3>How awesome is this presentation?</h3>
-          <div>{ questions }</div>
-            <SubmitBtn />
+        <div>{questions}</div>
+        <SubmitBtn />
       </Well>
     </div>
-  )
+  );
 }
 
-  createQuestions(){
+  createQuestions() {
     class Question {
-      constructor (answer, checked, enabled) {
+      constructor(answer, checked, enabled) {
         this.answer = answer,
         this.checked = checked,
         this.enabled = enabled
-    }
-  };
-  const answer1 = new Question ('Okay', 'checked', 'enabled');
-  const answer2 = new Question ('Good', 'checked', 'enabled');
-  const answer3 = new Question ('Very Good', 'checked', 'enabled');
-  const answer4 = new Question ('Great', 'checked', 'enabled');
-  const answer5 = new Question ('Excellent', 'checked', 'enabled');
+      }
+  }
 
-  const questions = [answer1, answer2, answer3, answer4, answer5];
-  return questions.map((item) => {
-    return (
-      <Radiobutton answer={item.answer} checked={item.checked} enabled={item.enabled} key={item.answer}/>
+    const answer1 = new Question ('Okay', 'checked', 'enabled');
+    const answer2 = new Question ('Good', 'checked', 'enabled');
+    const answer3 = new Question ('Very Good', 'checked', 'enabled');
+    const answer4 = new Question ('Great', 'checked', 'enabled');
+    const answer5 = new Question ('Excellent', 'checked', 'enabled');
+
+    const questions = [answer1, answer2, answer3, answer4, answer5];
+    return questions.map((item) =>
+      (
+      <Radiobutton
+        answer={item.answer}
+        checked={item.checked}
+        enabled={item.enabled}
+        key={item.answer}
+      />
     )
-  })
-
-}
-
+    );
+  }
 }
 
 //
