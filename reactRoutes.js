@@ -6,8 +6,4 @@ const LoginBox = require('./LoginBox.js');
 const Radio_1 = require('./Radio_1.js');
 const SubmitButton = require('./SubmitButtion.js');
 
-
-
-
-
 module.exports = Routes;

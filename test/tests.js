@@ -1,15 +1,16 @@
-var expect = require('chai').expect;
-var MongoClient = require('mongodb').MongoClient;
-var pg = require('pg');
+const expect = require('chai').expect;
+const MongoClient = require('mongodb').MongoClient;
+const pg = require('pg');
 const mongoose = require('mongoose');
-var db = mongoose.connection;
+const db = mongoose.connection;
 
-var host = require('../Database/Models/HostModel');
-var poll = require('../Database/Models/PollModel');
+const host = require('../Database/Models/HostModel');
+const poll = require('../Database/Models/PollModel');
 
 
 describe('TadPoll DB ', function() {
-  var polls, db;
+  const polls;
+  const db;
   before(function(done) {
     MongoClient.connect('mongodb://localhost/tadpoll', function(err, db_) {
       if (err) throw new Error(err);
@@ -26,9 +27,6 @@ describe('TadPoll DB ', function() {
       done();
     });
   });
-
-
-
 
   after(function() {
     db.close();

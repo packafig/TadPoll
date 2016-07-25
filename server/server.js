@@ -1,7 +1,7 @@
-var express = require('express');
-var path = require('path');
-var app = express();
-var dbMethods = require('../Database/databaseMethods');
+const express = require('express');
+const path = require('path');
+const app = express();
+const dbMethods = require('../Database/databaseMethods');
 
 app.use(express.static(path.join(__dirname, './../')));
 
