@@ -7,8 +7,8 @@ import makeAccount from './makeAccount';
 export default class App extends Component {
   render() {
     return (
-      <div>
-        <makeAccount />
+      <div id="App">
+        <p>Hello, Colin!</p>
       </div>
     );
   }
