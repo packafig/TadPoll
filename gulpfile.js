@@ -48,7 +48,7 @@ function buildScript(file, watch) {
 
 // run once
 gulp.task('scripts', () => {
-  return buildScript('App.js', false);
+  return buildScript('app.js', false);
 });
 
 // run nodemon
@@ -62,5 +62,5 @@ gulp.task('start', () => {
 
 // run 'scripts' task first, then watch for future changes
 gulp.task('default', ['scripts', 'start'], () => {
-  return buildScript('App.js', true);
+  return buildScript('app.js', true);
 });
