@@ -25,8 +25,8 @@ export default class App extends Component {
   render() {
     return (
       <div id="App">
-        <MakeAccount />
-        <Login />
+        <div><MakeAccount /></div>
+        <div><Login /></div>
       </div>
     );
   }
