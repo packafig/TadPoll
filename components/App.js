@@ -50,7 +50,7 @@ export default class App extends Component {
   login() {
     let userName = this.state.userName;
     let password = this.state.password;
-   
+
     if((userName in this.state.testLogins) && (password === this.state.testLogins[userName])) {
        alert("your in!");
        this.setState({currentUser: userName});
@@ -64,7 +64,7 @@ export default class App extends Component {
   createAccount() {
     let userName = this.state.userName;
     let password = this.state.password;
-    
+
     if( userName in this.state.testLogins ) {
        alert('That USERNAME already exists, Try Loggin In!');
     } else {
@@ -111,7 +111,6 @@ export default class App extends Component {
   }
 
   render() {
-
     if (this.state.questionsPage) {
       return (
         <div>

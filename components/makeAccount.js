@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { } from 'react-bootstrap';
 
 export default class MakeAccount extends Component {
   render() {
