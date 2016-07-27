@@ -13,7 +13,7 @@ export default class MakeAccount extends Component {
         </div>
         <div className="row" id="pw">
           <label><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="password" required />
+          <input type="text" placeholder="Enter Password" name="password" required />
           <button onClick={this.props.createAcc} type="submit">Create Account</button>
           <button type="submit" onClick={this.props.login}>Click here to Log In</button>
 
