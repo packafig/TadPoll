@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { } from 'react-bootstrap';
 
 export default class Login extends Component {
   render() {
     console.log(this.props.makeAcc)
     return (
-      <div className="container">
+      <div className="container row">
+        <div className="col-md-2"></div>
         <label><b>Username</b></label>
         <input type="text" placeholder="Enter Username" name="uname" required />
 
