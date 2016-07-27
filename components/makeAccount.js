@@ -5,7 +5,6 @@ import { } from 'react-bootstrap';
 export default class MakeAccount extends Component {
   render() {
     return(
-
       <div className='container'>
         <label><b>Username</b></label>
         <input onChange={this.props.userName} type="text" placeholder="Enter Username" name="uname" required />

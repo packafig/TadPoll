@@ -6,6 +6,7 @@ import MakeAccount from './makeAccount';
 import Login from './login';
 import Question from './question';
 import MakeQuestion from './makeQuestion';
+import AskPage from './AskPage';
 
 
 export default class App extends Component {
@@ -27,7 +28,8 @@ export default class App extends Component {
         allison: 'ilovetesting'
       },
       currentUser: "",
-      questionsPage: false
+      questionsPage: false,
+      askQuestionsPage: false
     };
     this.loginCreateAccPageSwitch = this.loginCreateAccPageSwitch.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
@@ -37,6 +39,9 @@ export default class App extends Component {
     this.addQuestion = this.addQuestion.bind(this);
     this.createPoll = this.createPoll.bind(this);
     this.createSecret = this.createSecret.bind(this);
+    this.getQuestions = this.getQuestions.bind(this);
+    this.goToHomepage = this.goToHomepage.bind(this);
+    this.goToQuestionsPage = this.goToQuestionsPage.bind(this);
   }
 
   loginCreateAccPageSwitch() {
@@ -107,20 +112,64 @@ export default class App extends Component {
 
     this.state.questions = [];
     $('.secret-inject').html('Your SUPER SECRET access code is ---->>> ' + secret + ' <<<---');
+
+    $.post('http://localhost:3000/', JSON.stringify(this.state.pollInfo));
+
+    $('.poll-title').val("");
+    $('.question').val("");
     console.log(this.state.pollInfo);
   }
 
+  getQuestions() {
+    let secret = this.state.pollInfo.secret;
+    let secretInput = $('.secretInput').val();
+
+    if(secret === secretInput) {
+      let domDiv = $('.questionsContainer');
+      let title = this.state.pollInfo.title;
+      let questions = this.state.pollInfo.questions
+
+      domDiv.append('<h1>'+title+'</h1>');
+      questions.forEach(function(question){
+
+        domDiv.append('<h3>'+question+'</h3>')
+        domDiv.append('<input type="radio" name="id" value="Yes">')
+        domDiv.append('<input type="radio" name="id" value="No">')
+      });
+
+      domDiv.append('<input type="submit"/>')
+    } else {
+      alert("Your SECRET CODE is not correct, try again!");
+    }
+
+  }
+
+  goToHomepage() {
+    this.setState({questionsPage: false});
+  }
+
+  goToQuestionsPage() {
+    this.setState({askQuestionsPage: true});  
+  }
+
   render() {
-    if (this.state.questionsPage) {
+    if(this.state.askQuestionsPage) {
+      console.log('hi');
       return (
         <div>
-          <MakeQuestion createPoll={this.createPoll} addQuestion={this.addQuestion} user={this.state.currentUser}/>
+          <AskPage showQuestions={this.getQuestions}/>
+        </div>
+      );
+    } else if (this.state.questionsPage) {
+      return (
+        <div>
+          <MakeQuestion createPoll={this.createPoll} addQuestion={this.addQuestion} user={this.state.currentUser} goHome={this.goToHomepage}/>
         </div>
       );
     } else if (this.state.showLogin) {
       return (
         <div>
-          <Login login={this.login} makeAcc={this.loginCreateAccPageSwitch} userName={this.handleUserName} password={this.handlePassword}/>
+          <Login login={this.login} makeAcc={this.loginCreateAccPageSwitch} userName={this.handleUserName} password={this.handlePassword} questionsPage={this.goToQuestionsPage}/>
         </div>
       );
     } else {

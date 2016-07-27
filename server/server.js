@@ -8,13 +8,12 @@ const config = require('../webpack.config');
 
 app.use(express.static(path.join(__dirname, './../')));
 
-
+app.post('http://localhost:3000/', (req, res) => {
+  console.log('its working yandri!');
+});
 
 app.listen(3000, () => {
   console.log('Server is listening on port 3000');
-});
-app.post('/', (req, res) => {
-  console.log('its working yandri!');
 });
 
 

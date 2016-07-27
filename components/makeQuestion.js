@@ -40,6 +40,7 @@ export default class MakeQuestion extends Component {
         <input type='text' className='question'/>
         <button onClick={this.props.addQuestion} >ADD</button>
         <button onClick={this.props.createPoll} type="submit">Create Poll</button>
+        <button onClick={this.props.goHome}>Logout</button>
         <p className='secret-inject'></p>
       </div>
       );

@@ -14,6 +14,7 @@ export default class Login extends Component {
 
         <button onClick={this.props.login} type="submit">Login</button>
         <button onClick={this.props.makeAcc}>Create Account</button>
+        <button onClick={this.props.questionsPage}>Go to Answer Poll</button>
       </div>
     );
   }
