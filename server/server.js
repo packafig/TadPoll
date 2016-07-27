@@ -8,13 +8,16 @@ const config = require('../webpack.config');
 
 app.use(express.static(path.join(__dirname, './../')));
 
-app.get('/', (req, res) => {
-  res.sendFile('/index.html');
-});
+
 
 app.listen(3000, () => {
   console.log('Server is listening on port 3000');
 });
+app.post('/', (req, res) => {
+  console.log('its working yandri!');
+});
+
+
 
 
 //this starts the webpack-dev-server instead of having to start it manually.
