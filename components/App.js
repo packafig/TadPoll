@@ -6,6 +6,8 @@ import MakeAccount from './makeAccount';
 import Login from './login';
 import Question from './question';
 
+
+const yand = "yandriiii";
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -17,18 +19,34 @@ export default class App extends Component {
         3: 'Orangutans or Lemurs?',
         4: 'Hippos or Bears?',
       },
-      showLogin: false,
-      showMakeAccount: true,
+      showLogin: true
     };
+    this.loginCreateAcc = this.loginCreateAcc.bind(this);
+  }
+
+  loginCreateAcc() {
+    if (this.state.showLogin) {
+      this.setState({showLogin: false});
+    } else {
+      this.setState({showLogin: true});
+    }
   }
 
   render() {
-    return (
-      <div id="App">
-        <MakeAccount />
-        <Login />
-      </div>
-    );
+
+    if (this.state.showLogin) {
+      return (
+        <div id="App">
+          <Login makeAcc={this.loginCreateAcc}/>
+        </div>
+      );
+    } else {
+      return (
+        <div id="App">
+          <MakeAccount login={this.loginCreateAcc}/>
+        </div>
+      );
+    }
   }
 }
 
