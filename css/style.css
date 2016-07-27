@@ -2,11 +2,13 @@ body div div{
  /*border: 1px solid black;*/
  position: absolute;
  font-family: 'Open Sans', sans-serif;
+ text-align: center;
+
 }
 
 .container {
   margin: 50px auto 0;
-  text-align: center;
+  
 }
 
 .container button {
