@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-export default class makeAccount extends Component {
+export default class MakeAccount extends Component {
   render() {
     return(
       <div>
@@ -9,6 +9,6 @@ export default class makeAccount extends Component {
           Hello, Colin!
         </h1>
       </div>
-    )
+    );
   }
 }
