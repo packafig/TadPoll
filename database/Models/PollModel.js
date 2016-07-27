@@ -3,16 +3,9 @@ const Schema = mongoose.Schema;
 
 const pollSchema = new Schema({
   hostOwner: String,
-  Title: String,
   accessCode: String,
-  pollQuestionMeta: {
-    title: String,
-    questions: [String],
-    results: [Number],
-  },
-  isActive: Boolean,
+  question: String,
   created_at: Date,
-  updated_at: Date,
 });
 
 // the schema is useless so far
