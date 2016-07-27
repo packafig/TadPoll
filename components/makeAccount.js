@@ -5,7 +5,6 @@ import { } from 'react-bootstrap';
 export default class MakeAccount extends Component {
   render() {
     return(
-
       <div className="container row" id="make-account">
         <div className="col-md-2"></div>
         <div className="row" id="username">
@@ -15,8 +14,9 @@ export default class MakeAccount extends Component {
         <div className="row" id="pw">
           <label><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="password" required />
-        <button type="submit" onClick={this.props.login}>Click here to Log In</button>
-      </div>
+          <button onClick={this.props.createAcc} type="submit">Create Account</button>
+          <button type="submit" onClick={this.props.login}>Click here to Log In</button>
+
     );
   }
 }
